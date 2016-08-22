@@ -19,9 +19,13 @@
 
       <ul class="nav navbar-nav navbar-right">
       {% if auth.check %}
+        {% if auth.isAdmin %}
+          <li><a href="{{ path_for('admin.index') }}">Administration</a></li>
+        {% endif %}
+
         <li>
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            {{ auth.user.first_name }}
+            {{ auth.user.username }}
             <span class="caret"></span>
           </a>
 
@@ -30,10 +34,6 @@
             <li><a href="{{ path_for('user.logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
           </ul>
         </li>
-
-        {% if auth.isAdmin %}
-          <li><a href="{{ path_for('admin.index') }}">Administration</a></li>
-        {% endif %}
       {% else %}
         <li><a href="{{ path_for('user.register') }}">Register</a></li>
         <li><a href="{{ path_for('user.login') }}">Login</a></li>

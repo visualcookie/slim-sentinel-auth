@@ -2,7 +2,7 @@
 
 {% block content %}
   {% include 'admin/partials/navigation.twig' %}
-  
+
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
@@ -14,6 +14,7 @@
               <tr>
                 <th>#</th>
                 <th>Email</th>
+                <th>Username</th>
                 <th>Last Login</th>
                 <th width="16%">Action</th>
               </tr>
@@ -23,11 +24,12 @@
               {% for user in listusers %}
               <tr>
                 <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.last_login }}</td>
                 <td>
-                  <a href="{{ path_for('admin.user.edit', { 'uid': user.id }) }}" class="btn btn-default btn-xs" title="Edit User"><span class="glyphicon glyphicon-pencil"></span></a>
-                  <a href="{{ path_for('admin.user.delete', { 'uid': user.id }) }}" class="btn btn-danger btn-xs" title="Delete User"><span class="glyphicon glyphicon-remove"></span></a>
+                  <a href="{{ path_for('admin.user.edit', { 'uid': user.username }) }}" class="btn btn-default btn-xs" title="Edit User"><span class="glyphicon glyphicon-pencil"></span></a>
+                  <a href="{{ path_for('admin.user.delete', { 'uid': user.username }) }}" class="btn btn-danger btn-xs" title="Delete User"><span class="glyphicon glyphicon-remove"></span></a>
                   <a href="" class="btn btn-primary btn-xs" title="Kill Session"><span class="glyphicon glyphicon-log-out"></span></a>
                 </td>
               </tr>

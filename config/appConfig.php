@@ -11,7 +11,7 @@ return [
       'host' => 'localhost',
       'database' => 'usermanager',
       'username' => 'root',
-      'password' => '',
+      'password' => 'mysql',
       'charset' => 'utf8',
       'collation' => 'utf8_bin',
       'prefix' => ''

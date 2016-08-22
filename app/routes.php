@@ -19,6 +19,9 @@ $app->group('', function() {
 $app->group('', function() {
   $this->get('/admin', 'AdminController:index')->setName('admin.index');
   $this->get('/admin/user/add', 'AdminController:index')->setName('admin.user.add');
-  $this->get('/admin/user/{uid}/edit', 'AdminController:index')->setName('admin.user.edit');
-  $this->get('/admin/user/{uid}/delete', 'AdminController:deleteUser')->setName('admin.user.delete');
+
+  $this->get('/admin/user/{uid}/edit', 'UserActionController:editUser')->setName('admin.user.edit');
+  $this->post('/admin/user/{uid}/edit', 'UserActionController:postEditUser');
+
+  $this->get('/admin/user/{uid}/delete', 'UserActionController:deleteUser')->setName('admin.user.delete');
 })->add(new AdminMiddleware($container));

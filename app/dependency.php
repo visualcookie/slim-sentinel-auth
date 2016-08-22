@@ -1,7 +1,6 @@
 <?php
 $container = $app->getContainer();
 
-use \Illuminate\Events\Dispatcher;
 use \Symfony\Component\HttpFoundation\Request;
 
 // Setup Eloquent
@@ -47,11 +46,27 @@ $container['csrf'] = function($container) {
   return new \Slim\Csrf\Guard;
 };
 
-// Add Sentinel
-$container['sentinel'] = function($container) {
-  return (new \Cartalyst\Sentinel\Native\Facades\Sentinel())->getSentinel();
+$container['hasher'] = function ($container) {
+    return new Cartalyst\Sentinel\Hashing\BcryptHasher;
 };
 
+$container['dispatcher'] = function ($container) {
+    return new Illuminate\Events\Dispatcher;
+};
+
+// Add Sentinel
+$container['sentinel'] = function ($container) {
+  $sentinel = (new \Cartalyst\Sentinel\Native\Facades\Sentinel())->getSentinel();
+  $sentinel->setUserRepository(
+    new \Cartalyst\Sentinel\Users\IlluminateUserRepository(
+      $container['hasher'],
+      $container['dispatcher'],
+      App\Models\User::class // This is the proper model name for this case
+    )
+  );
+
+  return $sentinel;
+};
 // Validator
 $container['validator'] = function($container) {
   return new App\Validation\Validator;
@@ -72,4 +87,8 @@ $container['AuthController'] = function($container) {
 
 $container['AdminController'] = function($container) {
   return new \App\Controllers\Admin\AdminController($container);
+};
+
+$container['UserActionController'] = function($container) {
+  return new \App\Controllers\Admin\UserActionController($container);
 };
