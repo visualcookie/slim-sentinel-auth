@@ -23,7 +23,8 @@ $container['view'] = function($container) {
   $view->getEnvironment()->addGlobal('auth', [
     'check' => $container->sentinel->check(),
     'user' => $container->sentinel->getUser(),
-    'isAdmin' => $container->auth->isAdmin()
+    'isAdmin' => $container->auth->isAdmin(),
+    'getRoles' => $container->auth->roles()
   ]);
 
   $view->getEnvironment()->addGlobal('flash', $container->flash);

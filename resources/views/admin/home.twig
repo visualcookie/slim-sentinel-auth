@@ -15,17 +15,19 @@
                 <th>#</th>
                 <th>Email</th>
                 <th>Username</th>
+                <th>Role</th>
                 <th>Last Login</th>
                 <th width="16%">Action</th>
               </tr>
             </thead>
 
             <tbody>
-              {% for user in listusers %}
+              {% for user in listUsers %}
               <tr>
                 <td>{{ user.id }}</td>
-                <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ getUsersRole[loop.index0].slug }}</td>
                 <td>{{ user.last_login }}</td>
                 <td>
                   <a href="{{ path_for('admin.user.edit', { 'uid': user.username }) }}" class="btn btn-default btn-xs" title="Edit User"><span class="glyphicon glyphicon-pencil"></span></a>

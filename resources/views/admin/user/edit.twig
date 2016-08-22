@@ -9,22 +9,22 @@
         <div class="panel-heading">Edit user</div>
 
         <div class="panel-body">
-          <form action="{{ path_for('admin.user.edit', { 'uid': current.username }) }}" method="post" autocomplete="on">
+          <form action="{{ path_for('admin.user.edit', { 'uid': current.data.username }) }}" method="post" autocomplete="on">
             {{ csrf.field | raw }}
 
             <div class="form-group">
               <label for="username">Username</label>
-              <input type="text" name="username" id="username" class="form-control" value="{{ current.username }}" disabled="disabled">
+              <input type="text" name="username" id="username" class="form-control" value="{{ current.data.username }}" disabled="disabled">
             </div>
 
             <div class="form-group">
               <label for="displayname">Displayname</label>
-              <input type="text" name="displayname" id="displayname" class="form-control" value="{{ current.displayname }}">
+              <input type="text" name="displayname" id="displayname" class="form-control" value="{{ current.data.displayname }}">
             </div>
 
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" name="email" id="email" class="form-control" value="{{ current.email }}">
+              <input type="email" name="email" id="email" class="form-control" value="{{ current.data.email }}">
             </div>
 
             <div class="form-group">
@@ -32,16 +32,13 @@
               <input type="password" name="password" id="password" class="form-control">
             </div>
 
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="role_user" id="role_user"> User
-              </label>
-            </div>
-
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="role_admin" id="role_admin"> Admin
-              </label>
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select name="role" id="role" class="selectpicker form-control">
+                {% for role in auth.getRoles %}
+                  <option value="{{ role.slug }}" {% if (role.slug == 'admin') and (current.role == 'admin') %}selected="selected"{% elseif (role.slug == 'user') and (current.role == 'user') %}selected="selected"{% endif %}>{{ role.name }}</option>
+                {% endfor %}
+              </select>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit changes</button>

@@ -3,6 +3,7 @@
 namespace App\Auth;
 
 use \App\Models\User;
+use \App\Models\Roles;
 
 class Auth
 {
@@ -18,5 +19,11 @@ class Auth
     if ($this->container->sentinel->getUser()) {
       return $this->container->sentinel->getUser()->inRole('admin');
     }
+  }
+
+  public function roles()
+  {
+    $roles = Roles::all();
+    return $roles;
   }
 }

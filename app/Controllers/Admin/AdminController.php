@@ -11,7 +11,14 @@ class AdminController extends Controller
   public function index($request, $response)
   {
     $users = User::all();
-    $this->container->view->getEnvironment()->addGlobal('listusers', $users);
+
+    $roles = [];
+    foreach ($users as $user) {
+      $roles[] = $this->container->sentinel->findById($user->id)->roles()->get()->first();
+    }
+
+    $this->container->view->getEnvironment()->addGlobal('listUsers', $users);
+    $this->container->view->getEnvironment()->addGlobal('getUsersRole', $roles);
 
     return $this->view->render($response, 'admin/home.twig');
   }
