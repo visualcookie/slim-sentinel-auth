@@ -14,11 +14,12 @@
         "slim/slim": "^3.7",
         "monolog/monolog": "^1.22",
         "slim/twig-view": "^2.1",
-        "cartalyst/sentinel": "^2.0"
+        "cartalyst/sentinel": "^2.0",
+        "illuminate/database": "^5.3"
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app"
+            "App\\": "src"
         }
     }
 }
