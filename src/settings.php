@@ -2,6 +2,7 @@
 
 return [
     'settings' => [
+        'debug' => true,
         'displayErrorDetails' => true,
         'addContentLengthHeader' => false,
 

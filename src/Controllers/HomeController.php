@@ -10,6 +10,6 @@ class HomeController extends ControllerWrapper
     public function index($request, $response)
     {
         // var_dump(User::find(1));
-        return $this->view->render($response, 'welcome.twig');
+        return $this->view->render($response, 'welcome');
     }
 }
