@@ -1,31 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Slim 3</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-    <style>
-    html, body {
-        height: 100%;
-    }
+{% extends 'layouts/base.twig' %}
 
-    .full-height {
-        height: 100%;
-    }
-    </style>
-</head>
-<body>
-
-    <div class="container full-height">
-        <div class="row full-height text-center align-items-center">
-            <div class="col">
-                <h1 class="display-1">Slim 3</h1>
-                <p>Package: visualcookie/slim-sentinel-auth</p>
-            </div>
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="display-3">Slim 3</h1>
+            <p>visualcookie/slim-sentinel-auth</p>
         </div>
     </div>
-
-</body>
-</html>
+</div>
+{% endblock %}

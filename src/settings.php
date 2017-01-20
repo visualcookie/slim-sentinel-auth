@@ -5,6 +5,7 @@ return [
         'debug' => true,
         'displayErrorDetails' => true,
         'addContentLengthHeader' => false,
+        'determineRouteBeforeAppMiddleware' => false,
 
         'databases' => [
             'default' => [
