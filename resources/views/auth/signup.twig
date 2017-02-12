@@ -1,0 +1,43 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="card">
+                <h3 class="card-header">Signup</h3>
+                <div class="card-block">
+                    <form action="#!" method="post">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" name="username" id="username" class="form-control" required="required" aria-describedby="usernameHelpInline">
+                            <small id="usernameHelpInline" class="text-muted">
+                                No whitespace.
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" id="password" class="form-control" required="required" aria-describedby="passwordHelpInline">
+                            <small id="passwordHelpInline" class="text-muted">
+                                Must be 8-20 characters long.
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Repeat Password:</label>
+                            <input type="password" name="password" id="password" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="submit" class="btn btn-primary">Signin now</button>
+                            <a href="#" class="btn btn-link" role="button">Forgot password?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
